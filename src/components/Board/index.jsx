@@ -82,7 +82,7 @@ const Board = (props) => {
       <div>
         Next player:
         <span style={{ fontSize: 20, marginLeft: 5 }}>
-          {x ? player1 : player2}
+          {x ? `${player1} (x) ` : `${player2} (o) `}
         </span>
       </div>
     );
