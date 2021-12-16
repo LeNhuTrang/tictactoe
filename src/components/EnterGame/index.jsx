@@ -25,7 +25,8 @@ const EnterGame = (props) => {
     e.preventDefault();
 
     formik.setTouched({ player1: true, player2: true });
-    
+    if (!formik.isValid) return;
+
     setState(false);
     setPlayer(formik.values);
   };
