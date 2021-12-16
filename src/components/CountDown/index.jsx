@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import useCountdown from "./useCountdown";
 
 const Countdown = (props) => {
-  const {restart, setRestart, winner, checkComplete} = props
+  const { restart, setRestart, winner, checkComplete, setSquare } = props;
   const endTime = new Date().getTime() + 60000 * 20; // 20 minutes
   const [timeLeft, setEndTime] = useCountdown(endTime);
 
@@ -44,7 +44,7 @@ const Countdown = (props) => {
           onClick={() => {
             setRestart(false);
             setEndTime(endTime);
-            props.setSquare(Array(25).fill(null));
+            setSquare(Array(25).fill(null));
           }}
         >
           Play again

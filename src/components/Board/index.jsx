@@ -5,7 +5,6 @@ import Square from "../Square";
 const Board = (props) => {
   const [square, setSquare] = useState(Array(25).fill(null));
   const [x, setX] = useState(true);
-  // const [playagain, setPlayagain] = useState(false);
   const [restart, setRestart] = useState(true);
 
   const renderSquare = (i) => {
@@ -52,10 +51,12 @@ const Board = (props) => {
     return null;
   };
 
+  //array of unfullfilled squares:
   let checkComplete = square.filter((item) => item === null);
   const winner = checkWinner(square);
   let status;
 
+  //logic to end game:
   if (winner) {
     status = (
       <div>
@@ -66,7 +67,7 @@ const Board = (props) => {
         ! You won this game
       </div>
     );
-  } else if (!checkComplete.length && !winner) {
+  } else if (!checkComplete.length && !winner) { //fully filled yet no winner
     status = "Awww! No winner!";
     setTimeout(() => {
       setSquare(Array(25).fill(null));
@@ -80,16 +81,6 @@ const Board = (props) => {
       </div>
     );
   }
-
-  //   const splitArr = () => {
-  //     let remake = [];
-  //     let temp = square;
-  //
-  //     for (let i = 0; i <= temp.length; i += 1) {
-  //       remake.push(temp.splice(0, 5));
-  //     }
-  //     return remake;
-  //   };
 
   return (
     <div className="board">
