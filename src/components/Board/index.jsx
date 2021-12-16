@@ -5,7 +5,8 @@ import Square from "../Square";
 const Board = (props) => {
   const [square, setSquare] = useState(Array(25).fill(null));
   const [x, setX] = useState(true);
-  const [playagain, setPlayagain] = useState(false);
+  // const [playagain, setPlayagain] = useState(false);
+  const [restart, setRestart] = useState(true);
 
   const renderSquare = (i) => {
     return <Square i={i} value={square[i]} handleClick={handleClick} />;
@@ -13,11 +14,8 @@ const Board = (props) => {
 
   const handleClick = (i) => {
     let cloneSquare = [...square];
-
     if (cloneSquare[i]) return;
-
     cloneSquare[i] = x ? "x" : "o";
-
     setX(!x);
     setSquare(cloneSquare);
   };
@@ -54,7 +52,7 @@ const Board = (props) => {
     return null;
   };
 
-  let checkcomplete = square.filter((item) => item === null);
+  let checkComplete = square.filter((item) => item === null);
   const winner = checkWinner(square);
   let status;
 
@@ -68,18 +66,17 @@ const Board = (props) => {
         ! You won this game
       </div>
     );
-  } else if (!checkcomplete.length && !winner) {
+  } else if (!checkComplete.length && !winner) {
     status = "Awww! No winner!";
     setTimeout(() => {
       setSquare(Array(25).fill(null));
-    }, 2000);
+      setRestart(true);
+    }, 1000);
   } else {
     status = (
       <div>
-        Next player: 
-         <span style={{ fontSize: 20 }}>
-          {x? " X" : " O"}
-        </span> 
+        Next player:
+        <span style={{ fontSize: 20 }}>{x ? " X" : " O"}</span>
       </div>
     );
   }
@@ -136,8 +133,10 @@ const Board = (props) => {
 
       <h3>{status}</h3>
       <Countdown
+        restart={restart}
+        setRestart={setRestart}
         winner={winner}
-        checkcomplete={checkcomplete.length}
+        checkComplete={checkComplete}
         setSquare={setSquare}
       />
     </div>
