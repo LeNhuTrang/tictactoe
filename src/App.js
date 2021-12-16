@@ -1,13 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import Board from "./components/Board";
+import EnterGame from "./components/EnterGame";
 
 function App() {
-  const [board, setBoard] = useState([]);
   return (
     <div className="container">
-      <Board />
-     
+      <EnterGame />
     </div>
   );
 }

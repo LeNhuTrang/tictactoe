@@ -3,6 +3,7 @@ import Countdown from "../CountDown";
 import Square from "../Square";
 
 const Board = (props) => {
+  const { player1, player2 } = props.players;
   const [square, setSquare] = useState(Array(25).fill(null));
   const [x, setX] = useState(true);
   const [restart, setRestart] = useState(true);
@@ -61,13 +62,16 @@ const Board = (props) => {
     status = (
       <div>
         Congrats{" "}
-        <span style={{ textTransform: "uppercase", color: "blue" }}>
-          {winner}
+        <span
+          style={{ textTransform: "uppercase", color: "blue", fontSize: 30 }}
+        >
+          {winner === "x" ? player1 : player2}
         </span>{" "}
         ! You won this game
       </div>
     );
-  } else if (!checkComplete.length && !winner) { //fully filled yet no winner
+  } else if (!checkComplete.length && !winner) {
+    //fully filled yet no winner
     status = "Awww! No winner!";
     setTimeout(() => {
       setSquare(Array(25).fill(null));
@@ -77,7 +81,9 @@ const Board = (props) => {
     status = (
       <div>
         Next player:
-        <span style={{ fontSize: 20 }}>{x ? " X" : " O"}</span>
+        <span style={{ fontSize: 20, marginLeft: 5 }}>
+          {x ? player1 : player2}
+        </span>
       </div>
     );
   }
