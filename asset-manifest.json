@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/tictactoe/static/css/main.e8833d8b.css",
+    "main.js": "/tictactoe/static/js/main.c689ae45.js",
+    "static/media/jeshoots-com-7VOyZ0-iO0o-unsplash.jpg": "/tictactoe/static/media/jeshoots-com-7VOyZ0-iO0o-unsplash.bd32e6bc02ab8fda8f36.jpg",
+    "index.html": "/tictactoe/index.html",
+    "main.e8833d8b.css.map": "/tictactoe/static/css/main.e8833d8b.css.map",
+    "main.c689ae45.js.map": "/tictactoe/static/js/main.c689ae45.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e8833d8b.css",
+    "static/js/main.c689ae45.js"
+  ]
+}
